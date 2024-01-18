@@ -1,6 +1,0 @@
-public class Square {
-
-    public static double calculateSquare(double x) {
-        return x * x;
-    }
-}
