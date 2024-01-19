@@ -10,12 +10,12 @@ public class HomePage {
                 "Subtraction. x - y",
                 "Multiplication. x * y",
                 "Division. x / y",
-                "Sort a list.",
-                "Search a sorted list.",
-                "Square. x^2",
+                "Square x^2",
                 "Square root of x.",
-                "Power. x^y",
+                "Power. x^y ",
                 "Factorial of x.",
+                "Search a sorted list",
+                "Sort a list.",
         };
 
         System.out.println("--*--*- Calculator, by Jerzy and Gabe -*--*--");
