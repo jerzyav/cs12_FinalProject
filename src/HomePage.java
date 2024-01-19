@@ -36,13 +36,13 @@ public class HomePage {
 
                 // Check if the input is within the valid range
                 if (operator >= 0 && operator <= 10) {
-                    break;  // Valid input, exit the loop
+                    break;  
                 } else {
                     System.out.println("Invalid input. Please enter a number between 0 and 10.");
                 }
             } catch (java.util.InputMismatchException e) {
                 System.out.println("Invalid input. Please enter a number.");
-                scanner.next();  // Consume the invalid input to avoid an infinite loop
+                scanner.next();  
             }
         }
 
