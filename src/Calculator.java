@@ -41,18 +41,40 @@ public class Calculator {
                     results.store(answer);
                     results.display(answer);
                     break;
-
+                // square
+                case 5:
+                    answer = operations.square(userInput.get_X(results));
+                    results.store(answer);
+                    results.display(answer);
+                    break;
+                // square root
+                case 6:
+                    answer = operations.square_root(userInput.get_X(results));
+                    results.store(answer);
+                    results.display(answer);
+                    break;
+                // power
+                case 7:
+                    answer = operations.power(userInput.get_X(results), userInput.get_Y(results));
+                    results.store(answer);
+                    results.display(answer);
+                    break;
+                // factorial
+                case 8:
+                    answer = operations.factorial(userInput.get_X(results));
+                    results.store(answer);
+                    results.display(answer);
+                    break;
                 default:
                     System.out.println("Please try again.");
                     break;
             }
             userInput.enable_ANS_input();
 
-            // prevents repeating exit prompt if user already entered 0 to quit
+            // prevents repeating exit prompt if the user already entered 0 to quit
             if (userOperator != 0) {
                 running = homepage.go_home_or_quit();
             }
         }
-
     }
 }
