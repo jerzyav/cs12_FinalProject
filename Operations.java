@@ -1,37 +1,36 @@
-import java.util.ArrayList;
-
 public class Operations {
+    private double a, b;
 
-    double a, b;
+    Operations(){}
 
-    double add(UserInput userInput, MiscValues miscValues) {
+    double add(UserInput userInput, StoredValues storedValues) {
         System.out.println("Addition in the form a + b.");
-        a = userInput.get_a_b("a", miscValues);
-        b = userInput.get_a_b("b", miscValues);
+        a = userInput.get_user_number("a", storedValues);
+        b = userInput.get_user_number("b", storedValues);
 
         return a + b;
     }
 
-    double subtract(UserInput userInput, MiscValues miscValues) {
+    double subtract(UserInput userInput, StoredValues storedValues) {
         System.out.println("Subtraction in the form a - b.");
-        a = userInput.get_a_b("a", miscValues);
-        b = userInput.get_a_b("b", miscValues);
+        a = userInput.get_user_number("a", storedValues);
+        b = userInput.get_user_number("b", storedValues);
 
         return a - b;
     }
 
-    double multiply(UserInput userInput, MiscValues miscValues) {
+    double multiply(UserInput userInput, StoredValues storedValues) {
         System.out.println("Multiplication in the form a * b.");
-        a = userInput.get_a_b("a", miscValues);
-        b = userInput.get_a_b("b", miscValues);
+        a = userInput.get_user_number("a", storedValues);
+        b = userInput.get_user_number("b", storedValues);
 
         return a * b;
     }
 
-    double divide(UserInput userInput, MiscValues miscValues) {
+    double divide(UserInput userInput, StoredValues storedValues) {
         System.out.println("Division in the form a / b.");
-        a = userInput.get_a_b("a", miscValues);
-        b = userInput.get_a_b("b", miscValues);
+        a = userInput.get_user_number("a", storedValues);
+        b = userInput.get_user_number("b", storedValues);
         if (b == 0) {
             System.out.println("[!] Error: Division by 0 is undefined.");
             return Double.NaN;
@@ -39,16 +38,17 @@ public class Operations {
         return a / b;
     }
 
-    double square(UserInput userInput, MiscValues miscValues) {
+    double square(UserInput userInput, StoredValues storedValues) {
         System.out.println("Square of a.");
-        a = userInput.get_a_b("a", miscValues);
+        a = userInput.get_user_number("a", storedValues);
+
 
         return a * a;
     }
 
-    double square_root(UserInput userInput, MiscValues miscValues) {
+    double square_root(UserInput userInput, StoredValues storedValues) {
         System.out.println("Square root of a.");
-        a = userInput.get_a_b("a", miscValues);
+        a = userInput.get_user_number("a", storedValues);
 
         if (a < 0) {
             System.out.println("[!] Error: Square root of a negative is imaginary.");
@@ -58,17 +58,17 @@ public class Operations {
         return Math.sqrt(a);
     }
 
-    double power(UserInput userInput, MiscValues miscValues) {
+    double power(UserInput userInput, StoredValues storedValues) {
         System.out.println("Power in the form of a ^ b.");
-        a = userInput.get_a_b("a", miscValues);
-        b = userInput.get_a_b("b", miscValues);
+        a = userInput.get_user_number("a", storedValues);
+        b = userInput.get_user_number("b", storedValues);
 
         return Math.pow(a,b);
     }
 
-    double factorial(UserInput userInput, MiscValues miscValues) {
+    double factorial(UserInput userInput, StoredValues storedValues) {
         System.out.println("Factorial in the form of a!.");
-        a = userInput.get_a_b("a", miscValues);
+        a = userInput.get_user_number("a", storedValues);
 
         if (a < 0) {
             System.out.println("[!] Error: Factorial of a negative number is undefined.");
@@ -81,19 +81,4 @@ public class Operations {
         }
         return result;
     }
-
-    ArrayList<Double> sort_list(UserInput userInput, MiscValues miscValues) {
-        System.out.println("Sorting a list of numbers, from least to greatest.");
-        ArrayList<Double> unsortedList = userInput.get_unchecked_list(miscValues);
-
-        return unsortedList;
-    }
-
-    double search_list(UserInput userInput, MiscValues miscValues) {
-        ArrayList<Double> sortedList = userInput.get_sorted_list(miscValues);
-        double itemToSearch = userInput.get_a_b("item", miscValues);
-
-        return -1;
-    }
-
 }

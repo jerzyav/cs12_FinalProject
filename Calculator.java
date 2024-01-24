@@ -1,20 +1,26 @@
 import java.util.ArrayList;
 
 public class Calculator {
-    void run() {
-        HomePage homepage = new HomePage();
+    public void run() {
+        UserDisplay userDisplay = new UserDisplay();
         UserInput userInput = new UserInput();
+
         Operations operations = new Operations();
-        Results results = new Results();
-        MiscValues miscValues = new MiscValues();
+        ListOperations listOperations = new ListOperations();
+        StoredValues storedValues = new StoredValues();
 
         boolean running = true;
         while (running) {
-            homepage.display();
+            userDisplay.display_homepage(storedValues);
 
+            // ask user which operation to use
+            int userOperator = userInput.get_user_operation();
             double answer;
-            int userOperator = userInput.ask_operation();
+
             switch (userOperator) {
+                // in each case, answer will be stored and displayed
+                // after getting first results, it will enable ANS functions
+
                 // quit program
                 case 0:
                     System.out.println("Exiting program.");
@@ -24,86 +30,75 @@ public class Calculator {
 
                 // addition
                 case 1:
-                    answer = operations.add(userInput, miscValues);
-                    miscValues.store(answer);
-                    userInput.enable_ANS_input();
-                    results.display(answer);
+                    answer = operations.add(userInput, storedValues);
+                    storedValues.store(answer);
+                    UserDisplay.display_result(answer);
                     break;
 
                 // subtraction
                 case 2:
-                    answer = operations.subtract(userInput, miscValues);
-                    miscValues.store(answer);
-                    userInput.enable_ANS_input();
-                    results.display(answer);
+                    answer = operations.subtract(userInput, storedValues);
+                    storedValues.store(answer);
+                    UserDisplay.display_result(answer);
                     break;
 
                 // multiplication
                 case 3:
-                    answer = operations.multiply(userInput, miscValues);
-                    miscValues.store(answer);
-                    userInput.enable_ANS_input();
-                    results.display(answer);
+                    answer = operations.multiply(userInput, storedValues);
+                    storedValues.store(answer);
+                    userDisplay.display_result(answer);
                     break;
 
                 // division
                 case 4:
-                    answer = operations.divide(userInput, miscValues);
-                    userInput.enable_ANS_input();
-                    miscValues.store(answer);
-                    results.display(answer);
+                    answer = operations.divide(userInput, storedValues);
+                    storedValues.store(answer);
+                    userDisplay.display_result(answer);
                     break;
 
                 // square
                 case 5:
-                    answer = operations.square(userInput, miscValues);
-                    miscValues.store(answer);
-                    userInput.enable_ANS_input();
-                    results.display(answer);
+                    answer = operations.square(userInput, storedValues);
+                    storedValues.store(answer);
+                    userDisplay.display_result(answer);
                     break;
 
                 // square root
                 case 6:
-                    answer = operations.square_root(userInput, miscValues);
-                    miscValues.store(answer);
-                    userInput.enable_ANS_input();
-                    results.display(answer);
+                    answer = operations.square_root(userInput, storedValues);
+                    storedValues.store(answer);
+                    userDisplay.display_result(answer);
                     break;
 
                 // power
                 case 7:
-                    answer = operations.power(userInput, miscValues);
-                    miscValues.store(answer);
-                    userInput.enable_ANS_input();
-                    results.display(answer);
+                    answer = operations.power(userInput, storedValues);
+                    storedValues.store(answer);
+                    userDisplay.display_result(answer);
                     break;
 
                 // factorial
                 case 8:
-                    answer = operations.factorial(userInput, miscValues);
-                    miscValues.store(answer);
-                    userInput.enable_ANS_input();
-                    results.display(answer);
+                    answer = operations.factorial(userInput, storedValues);
+                    storedValues.store(answer);
+                    UserDisplay.display_result(answer);
                     break;
 
                 // sort a list
                 case 9:
-                    ArrayList<Double> answerList = operations.sort_list(userInput, miscValues);
-                    miscValues.store(answerList);
-                    userInput.enable_ANS_list_input();
-                    results.display(answerList);
+                    ArrayList<Double> sortedList = listOperations.sort_list(userInput, storedValues);
+                    storedValues.store(sortedList);
+                    UserDisplay.display_result(sortedList);
                     break;
 
                 // search a list
                 case 10:
-                    answer = operations.search_list(userInput, miscValues);
-                    results.display(answer);
+                    int index = listOperations.search_list(userInput, storedValues);
+                    storedValues.store(index);
+                    UserDisplay.display_result(index);
                     break;
 
-            }
-            // prevents repeating exit prompt if user already entered 0 to quit in homepage
-            if (userOperator != 0) {
-                running = userInput.go_home_or_quit();
+
             }
         }
 
