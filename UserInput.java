@@ -2,14 +2,16 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInput {
-    Scanner scanner;
+    private static Scanner scanner;
+    public static StoredValues storedValues;
 
-    UserInput() {
+    UserInput(StoredValues values) {
         scanner = new Scanner(System.in);
+        storedValues = values;
     }
 
 
-    public double get_user_number(String variable, StoredValues storedValues) {
+    public static double get_user_number(String variable) {
         double userNum = 0;
 
         // prompts user for a value; once per set of input(s) to avoid repetition
@@ -57,7 +59,7 @@ public class UserInput {
         return userNum;
     }
 
-    public ArrayList<Double> get_unsorted_list(StoredValues storedValues) {
+    public static ArrayList<Double> get_unsorted_list() {
         ArrayList<Double> unsortedList = new ArrayList<>();
         double item;
 
@@ -100,7 +102,7 @@ public class UserInput {
         return unsortedList;
     }
 
-    public boolean get_user_list(StoredValues storedValues) {
+    public static boolean get_user_list_choice() {
     boolean useRecentList = true;
 
         System.out.println("[?] 0. Enter your new list manually.");
@@ -135,7 +137,7 @@ public class UserInput {
         return useRecentList;
     }
 
-    public int get_user_operation() {
+    public static int get_user_operation() {
     int operator = 0;
     System.out.println("[?] Enter the number of your selection.");
 

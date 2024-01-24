@@ -44,11 +44,11 @@ public class StoredValues {
         return this.ansList;
     }
 
-    public double get_PI() {
+    public static double get_PI() {
         return Math.PI;
     }
 
-    public double get_E() {
+    public static double get_E() {
         return Math.E;
 
     }

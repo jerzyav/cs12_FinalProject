@@ -1,9 +1,10 @@
 import java.util.ArrayList;
 
 public class UserDisplay {
+
     UserDisplay() {};
 
-    public void display_homepage(StoredValues storedValues) {
+    public static void display_homepage(StoredValues storedValues) {
         double ansAtHome = storedValues.get_ANS();
         String ansListStatus;
 

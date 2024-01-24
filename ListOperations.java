@@ -1,20 +1,23 @@
 import java.util.ArrayList;
 
 public class ListOperations {
+    static StoredValues storedValues;
 
-    ListOperations() {};
+    ListOperations(StoredValues values){
+        storedValues = values;
+    }
 
-    public ArrayList<Double> sort_list(UserInput userInput, StoredValues storedValues) {
+    public static ArrayList<Double> sort_list(UserInput userInput) {
 
         System.out.println("Sorting a list of numbers, from least to greatest.");
 
-        ArrayList<Double> unsortedList = userInput.get_unsorted_list(storedValues);
+        ArrayList<Double> unsortedList = userInput.get_unsorted_list();
         ArrayList<Double> sortedList = merge_sort(unsortedList, 0, unsortedList.size()-1);
 
         return sortedList;
     }
 
-    public int search_list(UserInput userInput, StoredValues storedValues) {
+    public static int search_list(UserInput userInput) {
         int index;
         double itemToSearch;
         ArrayList<Double> sortedList;
@@ -23,24 +26,23 @@ public class ListOperations {
 
         // forces user to enter and sort a list if there is none previously sorted
         if (storedValues.ans_list_empty())  {
-            sortedList = sort_list(userInput, storedValues);
+            sortedList = sort_list(userInput);
         }
         else {
             // gives user the option to use previous or use new list
-            boolean useRecentList = userInput.get_user_list(storedValues);
+            boolean useRecentList = userInput.get_user_list_choice();
             if (useRecentList) {
                 sortedList = storedValues.get_ANS_list();
             }
             else {
-                sortedList = sort_list(userInput,storedValues);
+                sortedList = sort_list(userInput);
             }
         }
 
         storedValues.store(sortedList);
         System.out.println("[?] The list: " + sortedList);
 
-
-        itemToSearch = userInput.get_user_number("number to search", storedValues);
+        itemToSearch = userInput.get_user_number("number to search");
         index = recursive_binary_search(sortedList, itemToSearch, 0, sortedList.size()-1);
 
         return index;
